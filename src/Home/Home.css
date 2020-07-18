@@ -1,0 +1,27 @@
+.container {
+    margin: 0 0;
+}
+
+.home-container {
+    justify-content: center;
+    margin: 0 5%;
+}
+
+.card {
+    margin: 4% 2% !important;
+    padding: 1% 1% !important;
+    height: 15%;
+    font-size: 14px;
+}
+
+.infected {
+    border-bottom: 10px solid red;
+}
+
+.recovered {
+    border-bottom: 10px solid lawngreen;
+}
+
+.deaths {
+    border-bottom: 10px solid black;
+}
