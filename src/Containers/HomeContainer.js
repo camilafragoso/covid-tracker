@@ -10,7 +10,7 @@ const HomeContainer = (props) => {
 
     return (
         <div className="home-container">
-            <h1>Dados do Covid-19 no Brasil</h1>
+            <h1>Dados do Covid-19 {props.local}</h1>
             <div>
                 <Grid container spacing={3} justify="center" className="container">
                     <Grid item component={Card} xs={12} md={2} className="card infected">
@@ -18,8 +18,8 @@ const HomeContainer = (props) => {
                             subtitle="Número de infectados pelo Covid-19"/>
                     </Grid>
                     <Grid item component={Card} xs={12} md={2} className="card recovered">
-                        <Cards title="Recuperados" number={props.recovered} data={props.data} 
-                            subtitle="Número de recuperados do Covid-19"/>
+                        <Cards title={props.title} number={props.recovered} data={props.data} 
+                            subtitle={props.subtitle}/>
                     </Grid>
                     <Grid item component={Card} xs={12} md={2} className="card deaths">
                         <Cards title="Óbitos" number={props.deaths} data={props.data} 
@@ -29,7 +29,8 @@ const HomeContainer = (props) => {
             </div>
             <Picker state={props.state} handleSelectChange={props.handleSelectChange}></Picker>
             <div className="chart-container">
-                  <Chart className="chart" confirmed={props.confirmed} deaths={props.deaths} recovered={props.recovered} 
+                  <Chart className="chart" label={props.label} chartlegend={props.chartlegend}
+                  confirmed={props.confirmed} deaths={props.deaths} recovered={props.recovered} 
                   data={props.data}></Chart>
             </div>
         </div>

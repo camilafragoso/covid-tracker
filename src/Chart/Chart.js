@@ -14,7 +14,7 @@ const Chart = (props) => {
         <div className="chart">
             <Bar className="chart"
                 data={{
-                    labels: ['Infectados', 'Recuperados', 'Óbitos'],
+                    labels: ['Infectados', props.label, 'Óbitos'],
                     datasets: [{
                         label: 'Pessoas',
                         backgroundColor: ['red', 'green', 'black'],
@@ -23,7 +23,7 @@ const Chart = (props) => {
                 }}
                 options={{
                     legend: {display: false},
-                    title: {display: true, text: 'Situação atual no Brasil'}
+                    title: {display: true, text: props.chartlegend}
                 }}            
             />
 

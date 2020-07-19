@@ -4,6 +4,8 @@ import axios from 'axios';
 
 
 const Picker = (props) => {
+    let convertida = null;
+    let foreachstate = null;
 
     const [states, setStates] = useState([]);
     
@@ -13,17 +15,23 @@ const Picker = (props) => {
       }; 
     savestates();
 
-    const convertida = states.map(function(obj) {
-        return Object.keys(obj).map(function(chave) {
-            return obj[chave];
-        });
-    });
-
-    const foreachstate = convertida.map(state => {
-        return (
-        <option>{state[2]}</option>
-        ); 
-    });
+    if (states !== undefined){
+        if (states.length == 27){
+            convertida = states.map(function(obj) {
+                return Object.keys(obj).map(function(chave) {
+                    return obj[chave];
+                });
+            });
+        }
+    
+        if (convertida !== null){
+            foreachstate = convertida.map(state => {
+                return (
+                <option>{state[2]}</option>
+                ); 
+            });
+        }
+    }
 
     return (
         <FormControl>

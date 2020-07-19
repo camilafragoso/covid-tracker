@@ -38,6 +38,7 @@ const MainContainer = (props) => {
             setData(novoarray[0].data);
           });
       });
+
     
     const poststate = received.map(post => {
     return (
@@ -55,14 +56,29 @@ const MainContainer = (props) => {
         ); 
       });
 
-    const handleSelectChange = async (state) => {
-      received.map(estado => {
-        if (estado.state == state) {
-          let convertido = Object.values(estado);
-          setState(convertido);
-        }
-      })
+      const handleSelectChange = async (state) => {
+        received.map(estado => {
+          if (estado.state == state) {
+            let convertido = Object.values(estado);
+            console.log(convertido);
+            console.log(estado);
+            setState(convertido);
+          }
+        })
+      };
+
+    let home = <HomeContainer label="Recuperados" local="no Brasil" title="Recuperados" 
+    subtitle="Número de Recuperados do Covid-19" chartlegend="Número de infectados, recuperados e óbitos causados pelo covid-19"
+    confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
+    data={new Date(country[5]).toDateString()} state={received} handleSelectChange={handleSelectChange}/>;
+
+    if (state.length !== 0){
+      home = <HomeContainer label="Suspeitos" local={state[2]} title="Suspeitos" 
+      subtitle="Número de suspeitos do Covid-19" chartlegend="Número de infectados, suspeitos e óbitos causados pelo covid-19"
+      confirmed={state[3]} deaths={state[4]} recovered={state[5]} 
+      data={new Date(state[7]).toDateString()} handleSelectChange={handleSelectChange}/>
     };
+
 
     return (
         <div>
@@ -76,8 +92,7 @@ const MainContainer = (props) => {
               {mundo}
             </Route>
             <Route path="/" exact>
-              <HomeContainer confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
-                data={new Date(country[5]).toDateString()} state={received} handleSelectChange={handleSelectChange}/>
+              {home}
             </Route>
         </div>
     );
