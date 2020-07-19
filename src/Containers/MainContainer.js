@@ -10,6 +10,7 @@ import Chart from '../Chart/Chart';
 import Typography from '@material-ui/core/Typography';
 import '../Containers/MainContainer.css';
 import StateCard from '../Card/StateCard';
+import Picker from '../Picker/Picker';
 
 
 const MainContainer = (props) => {
@@ -46,7 +47,7 @@ const MainContainer = (props) => {
     const poststate = received.map(post => {
     return (
       <Post state={post.state} cases={post.cases} suspeitos={post.suspects} deaths={post.deaths} 
-      data={new Date(post.datetime).toDateString()}/>
+      data={new Date(post.datetime).toDateString()} uf={post.uf}/>
       ); 
     });
 
@@ -75,6 +76,7 @@ const MainContainer = (props) => {
               <h1>Dados do Covid-19 no Brasil</h1>
               <Home confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
                 data={new Date(country[5]).toDateString()}/>
+                <Picker state={received}></Picker>
                 <div className="chart-container">
                   <Chart className="chart" confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
                   data={new Date(country[5]).toDateString()}></Chart>

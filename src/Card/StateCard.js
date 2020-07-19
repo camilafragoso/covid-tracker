@@ -23,33 +23,30 @@ const StateCard = (props) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
-         <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.img}
-          title="Contemplative Reptile"
-        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2"> {props.state}
           </Typography>
           <div className="content">
+            <div className="two">
             <Typography color="textSecondary" gutterbottom>Infectados</Typography>
                 <Typography variant="h5">
                     <CountUp start={0} end={props.cases} duration={2.5} separator=","/>
                 </Typography>
-                <Typography color="textSecondary" gutterbottom>Suspeitos</Typography>
+            </div>
+            <div className="two">
+            <Typography color="textSecondary" gutterbottom>Suspeitos</Typography>
                 <Typography variant="h5">
                     <CountUp start={0} end={props.suspects} duration={2.5} separator=","/>
                 </Typography>
-                <Typography color="textSecondary" gutterbottom>Óbitos</Typography>
+            </div>
+            <div className="two">
+            <Typography color="textSecondary" gutterbottom>Óbitos</Typography>
                 <Typography variant="h5">
                     <CountUp start={0} end={props.deaths} duration={2.5} separator=","/>
                 </Typography>
+            </div>      
           </div>
         </CardContent>
-      </CardActionArea>
-    </Card>
     );
 };
 
