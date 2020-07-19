@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Post/State.css';
+import '../Card/State.css';
 import CountUp from 'react-countup';
 
 const Post = (props) => {

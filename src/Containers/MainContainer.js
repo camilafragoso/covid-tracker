@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 
 import axios from 'axios';
-import Post from '../Post/State';
+import Post from '../Card/State';
 import Header from '../Header/Header';
 import {Route} from 'react-router-dom';
-import Country from '../Post/Country';
+import Country from '../Card/Country';
 import Home from '../Home/Home';
 import Chart from '../Chart/Chart';
+import Typography from '@material-ui/core/Typography';
 import '../Containers/MainContainer.css';
+import StateCard from '../Card/StateCard';
 
 
 const MainContainer = (props) => {
@@ -48,6 +50,7 @@ const MainContainer = (props) => {
       ); 
     });
 
+
     const mundo = data.map(post => {
       return (
         <Country name={post.country} confirmed={post.confirmed} deaths={post.deaths} recovered={post.recovered} 
@@ -57,23 +60,25 @@ const MainContainer = (props) => {
 
     return (
         <div>
-            <Header></Header>
+            <Header/>
             <Route path="/estados">
-                <h1>Dados do Covid-19 nos Estados Brasileiros</h1>
-                {poststate}
+              <h1>Dados do Covid-19 nos Estados Brasileiros</h1>
+              <Typography variant="subtitle1">Atualizados em {new Date(country[5]).toDateString()}</Typography>
+              {poststate}
             </Route>
             <Route path="/mundo">
               <h1>Dados do Covid-19 no Mundo</h1>
-                {mundo}
+              <Typography variant="subtitle1">Atualizados em {new Date(country[5]).toDateString()}</Typography>
+              {mundo}
             </Route>
-            <Route path="/">
+            <Route path="/" exact>
               <h1>Dados do Covid-19 no Brasil</h1>
               <Home confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
-              data={new Date(country[5]).toDateString()}/>
-              <div className="chart-container">
-                <Chart className="chart" confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
-                data={new Date(country[5]).toDateString()}></Chart>
-              </div>
+                data={new Date(country[5]).toDateString()}/>
+                <div className="chart-container">
+                  <Chart className="chart" confirmed={country[2]} deaths={country[3]} recovered={country[4]} 
+                  data={new Date(country[5]).toDateString()}></Chart>
+                </div>
             </Route>
         </div>
     );

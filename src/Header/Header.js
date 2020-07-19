@@ -11,7 +11,7 @@ const Header = () => {
             <nav className="nav">
                 <ul>
                     <li>
-                        <Link to="/" className="link">Brasil</Link>
+                        <Link to="/" exact className="link">Brasil</Link>
                     </li>
                     <li>
                         <Link to="/estados" className="link">Estados</Link>
