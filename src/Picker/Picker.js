@@ -6,8 +6,7 @@ import axios from 'axios';
 const Picker = (props) => {
 
     const [states, setStates] = useState([]);
-    const [statearray, setStateArray] = useState([]);
-
+    
     const savestates = async () => {
         const response = await props.state;
         setStates(response);
@@ -28,7 +27,7 @@ const Picker = (props) => {
 
     return (
         <FormControl>
-            <NativeSelect>
+            <NativeSelect onChange={(event)=> {props.handleSelectChange(event.target.value)}}>
                 <option value="Estados">Selecionar Estado</option>
                 {foreachstate}
             </NativeSelect>

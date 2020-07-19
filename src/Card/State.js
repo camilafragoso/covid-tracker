@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 import Typography from '@material-ui/core/Typography';
 
 
-const Post = (props) => { 
+const State = (props) => { 
 
     return (
         <div className="post">
@@ -36,4 +36,4 @@ const Post = (props) => {
     );
 };
 
-export default Post;
+export default State;
