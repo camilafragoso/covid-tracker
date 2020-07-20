@@ -7,7 +7,7 @@ import axios from 'axios';
 import Picker from '../Picker/Picker';
 import '../Containers/HomeContainer.css';
 
-const HomeContainer = (props) => {
+const WorldContainer = (props) => {
 
     return (
         <div className="home-container">
@@ -19,8 +19,8 @@ const HomeContainer = (props) => {
                             subtitle="Número de infectados pelo Covid-19"/>
                     </Grid>
                     <Grid item component={Card} xs={12} md={2} className="card recovered">
-                        <Cards title={props.title} number={props.recovered} data={props.data} 
-                            subtitle={props.subtitle}/>
+                        <Cards title="Recuperados" number={props.recovered} data={props.data} 
+                            subtitle="Número de recuperados do Covid-19"/>
                     </Grid>
                     <Grid item component={Card} xs={12} md={2} className="card deaths">
                         <Cards title="Óbitos" number={props.deaths} data={props.data} 
@@ -28,7 +28,7 @@ const HomeContainer = (props) => {
                     </Grid>
                 </Grid>
             </div>
-            <Picker state={props.state} handleSelectChange={props.handleSelectChange} pickertitle="Selecionar Estado"></Picker>
+            <Picker state={props.state} handleSelectChange={props.handleSelectChange} pickertitle="Selecionar País"></Picker>
             <div className="chart-container">
                   <Chart className="chart" label={props.label} chartlegend={props.chartlegend}
                   confirmed={props.confirmed} deaths={props.deaths} recovered={props.recovered} 
@@ -38,4 +38,4 @@ const HomeContainer = (props) => {
     );
 };
 
-export default HomeContainer;
+export default WorldContainer;

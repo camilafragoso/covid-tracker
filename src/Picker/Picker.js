@@ -8,6 +8,14 @@ const Picker = (props) => {
     let foreachstate = null;
 
     const [states, setStates] = useState([]);
+
+    /*useEffect(()=>{
+        axios.get('https://covid19-brazil-api.now.sh/api/report/v1')
+          .then(response => {
+             let toarray = Object.values(response);
+            setStates(toarray[0].data);
+          });
+      });*/
     
     const savestates = async () => {
         const response = await props.state;
@@ -23,6 +31,7 @@ const Picker = (props) => {
                 });
             });
         }
+    }
     
         if (convertida !== null){
             foreachstate = convertida.map(state => {
@@ -31,12 +40,20 @@ const Picker = (props) => {
                 ); 
             });
         }
-    }
+
+    const handleSelectChange = async (stateclicked) => {
+        states.map(estado => {
+          if (estado.state == stateclicked) {
+            let convertido = Object.values(estado);
+            setStates(convertido);
+          }
+        })
+      };
 
     return (
         <FormControl>
             <NativeSelect onChange={(event)=> {props.handleSelectChange(event.target.value)}}>
-                <option value="Estados">Selecionar Estado</option>
+                <option value="Estados">{props.pickertitle}</option>
                 {foreachstate}
             </NativeSelect>
         </FormControl>
